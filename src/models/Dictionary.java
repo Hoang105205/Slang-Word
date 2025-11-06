@@ -11,12 +11,12 @@ import java.util.Map;
 public class Dictionary {
     private Map<String, List<String>> slangMap;
 
-    public  Dictionary() {
-        this.slangMap = new HashMap<String, List<String>>();
+    public  Dictionary(Map<String, List<String>> data) {
+        this.slangMap = data;
     }
 
     public List<String> searchBySlang(String word) {
-        return null;
+        return slangMap.get(word);
     }
     public List<String> searchByDefinition(String keyword) {
         return null;
