@@ -1,9 +1,5 @@
 import controllers.AppController;
-import utils.Loader;
 import views.MainFrame;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Hoang
@@ -14,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         new MainFrame(new AppController());
+
     }
 
 }

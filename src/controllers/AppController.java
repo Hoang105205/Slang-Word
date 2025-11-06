@@ -1,7 +1,7 @@
 package controllers;
 
 import models.Dictionary;
-import utils.Loader;
+import repositories.Repository;
 
 import java.util.List;
 
@@ -11,12 +11,11 @@ import java.util.List;
  */
 public class AppController {
     private Dictionary dictionary;
-    private Loader loader;
+    private Repository repository;
 
     public AppController(){
-        loader = new Loader();
-        loader.loadData("src/resources/slang.txt");
-        dictionary = new Dictionary(loader.slangMap);
+        repository = new Repository();
+        dictionary = repository.loadData();
     }
 
     // ================== SEARCH ==================
