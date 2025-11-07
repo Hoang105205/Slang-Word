@@ -2,7 +2,6 @@ package models;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,13 +18,5 @@ public class Dictionary implements Serializable {
     public  Dictionary(Map<String, List<String>> data) {
         this.slangMap = data;
     }
-
-    public List<String> searchBySlang(String word) {
-        return slangMap.get(word);
-    }
-    public List<String> searchByDefinition(String keyword) {
-        return null;
-    }
-
 
 }

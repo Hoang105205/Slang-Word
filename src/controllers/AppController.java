@@ -2,6 +2,7 @@ package controllers;
 
 import models.Dictionary;
 import repositories.Repository;
+import services.DictionaryService;
 
 import java.util.List;
 
@@ -12,15 +13,17 @@ import java.util.List;
 public class AppController {
     private Dictionary dictionary;
     private Repository repository;
+    private DictionaryService  dictionaryService;
 
     public AppController(){
         repository = new Repository();
         dictionary = repository.loadData();
+        dictionaryService = new DictionaryService(dictionary);
     }
 
     // ================== SEARCH ==================
     public List<String> searchBySlang(String word) {
-        return dictionary.searchBySlang(word);
+        return dictionaryService.searchBySlang(word);
     }
 
 //    public List<SlangWord> searchByDefinition(String keyword) {
