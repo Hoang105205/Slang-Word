@@ -20,6 +20,9 @@ public class NavBar extends JPanel {
         });
 
         JButton btnSearchByDefinition = new JButton("Search By Definition");
+        btnSearchByDefinition.addActionListener(e -> {
+            frame.setContent(new SearchByKeywordPanel(controller));
+        });
 
         JButton btnViewHistory = new JButton("View History");
 

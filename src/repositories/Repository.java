@@ -69,7 +69,9 @@ public class Repository {
                     }
                 }
 
-                dictionary = new Dictionary(slangMap);
+                List<String> searchedSlang = new ArrayList<>();
+
+                dictionary = new Dictionary(slangMap, searchedSlang);
 
                 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))){
                     oos.writeObject(dictionary);
@@ -83,5 +85,14 @@ public class Repository {
         }
 
         return dictionary;
+    }
+
+    public void saveData(Dictionary dictionary){
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))){
+            oos.writeObject(dictionary);
+        }
+        catch (IOException e){
+            System.out.println("Error when saving file: " + DATA_FILE);
+        }
     }
 }

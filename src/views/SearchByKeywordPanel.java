@@ -33,16 +33,18 @@ public class SearchByKeywordPanel extends JPanel {
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
-        JPanel resultPanel = new JPanel();
-        resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS));
-        resultPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
-        resultPanel.setOpaque(false);
+        JTextArea resultArea = new JTextArea();
+        resultArea.setEditable(false);
+        resultArea.setLineWrap(true);
+        resultArea.setWrapStyleWord(true);
+        resultArea.setFont(new Font("Arial", Font.PLAIN, 20));
+
 
         btnSearch.addActionListener(e -> {
-            resultPanel.removeAll();
+            resultArea.setText("");
 
-            String slang = searchText.getText().trim();
-            if (slang.isEmpty()) {
+            String keyword = searchText.getText().trim();
+            if (keyword.isEmpty()) {
                 JOptionPane.showMessageDialog(this,
                         "Please enter the definition",
                         "Input required",
@@ -50,36 +52,27 @@ public class SearchByKeywordPanel extends JPanel {
                 return;
             }
 
-            List<String> meanings = controller.searchBySlang(slang);
-            if (meanings == null || meanings.isEmpty()) {
-                JLabel lbl = new JLabel("No result found for: " + slang);
-                lbl.setFont(new Font("Arial", Font.PLAIN, 20));
-                resultPanel.add(lbl);
+            List<String> slangs = controller.searchByDefinition(keyword);
+            if (slangs == null || slangs.isEmpty()) {
+                resultArea.setText("No result found for: " + keyword);
             } else {
-                JLabel lblTitle = new JLabel("Meanings for \"" + slang + "\":");
-                lblTitle.setFont(new Font("Arial", Font.BOLD, 25));
-                resultPanel.add(lblTitle);
-
-                for (String meaning : meanings) {
-                    JLabel element = new JLabel("• " + meaning);
-                    element.setFont(new Font("Arial", Font.PLAIN, 20));
-                    element.setBorder(BorderFactory.createEmptyBorder(2, 15, 2, 0));
-                    resultPanel.add(element);
+                StringBuilder sb = new StringBuilder("  Some slang words have \"" + keyword + "\" in their definition:\n\n");
+                for (String slang : slangs) {
+                    sb.append("    • ").append(slang).append("\n");
                 }
+                resultArea.setText(sb.toString());
             }
 
-            resultPanel.revalidate();
-            resultPanel.repaint();
+            resultArea.setCaretPosition(0);
         });
-
+        JScrollPane resultScroll = new JScrollPane(resultArea);
+        resultScroll.getVerticalScrollBar().setUnitIncrement(40);
 
         add(searchPanel, BorderLayout.PAGE_START);
 
-        JSeparator separator = new JSeparator();
-        separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1));
-        centerPanel.add(separator);
         centerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        centerPanel.add(resultPanel);
+        centerPanel.add(resultScroll);
+
         add(centerPanel, BorderLayout.CENTER);
     }
 }

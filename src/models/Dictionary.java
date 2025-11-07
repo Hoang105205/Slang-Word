@@ -14,9 +14,11 @@ public class Dictionary implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public Map<String, List<String>> slangMap;
+    public List<String> searchedSlang;
 
-    public  Dictionary(Map<String, List<String>> data) {
+    public  Dictionary(Map<String, List<String>> data, List<String> searchedSlang) {
         this.slangMap = data;
+        this.searchedSlang = searchedSlang;
     }
 
 }

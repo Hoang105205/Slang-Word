@@ -18,7 +18,7 @@ public class AppController {
     public AppController(){
         repository = new Repository();
         dictionary = repository.loadData();
-        dictionaryService = new DictionaryService(dictionary);
+        dictionaryService = new DictionaryService(dictionary, repository);
     }
 
     // ================== SEARCH ==================
@@ -26,8 +26,9 @@ public class AppController {
         return dictionaryService.searchBySlang(word);
     }
 
-//    public List<SlangWord> searchByDefinition(String keyword) {
-//        return dictionary.searchByDefinition(keyword);
-//    }
+
+    public List<String> searchByDefinition(String keyword) {
+        return dictionaryService.searchByDefinition(keyword);
+    }
 
 }
