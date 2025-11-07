@@ -14,16 +14,14 @@ import java.util.regex.Pattern;
  */
 public class DictionaryService {
     private final Dictionary dictionary;
-    private final Repository repository;
 
-    public DictionaryService(Dictionary dictionary,  Repository repository) {
+    public DictionaryService(Dictionary dictionary) {
         this.dictionary = dictionary;
-        this.repository = repository;
     }
+
 
     public List<String> searchBySlang(String word) {
         dictionary.searchedSlang.add(word);
-        repository.saveData(dictionary);
         return dictionary.slangMap.get(word);
     }
 
@@ -43,5 +41,9 @@ public class DictionaryService {
             }
         }
         return result;
+    }
+
+    public List<String> getSearchHistory() {
+        return dictionary.searchedSlang;
     }
 }

@@ -18,7 +18,11 @@ public class AppController {
     public AppController(){
         repository = new Repository();
         dictionary = repository.loadData();
-        dictionaryService = new DictionaryService(dictionary, repository);
+        dictionaryService = new DictionaryService(dictionary);
+    }
+
+    public void saveData(){
+        repository.saveData(dictionary);
     }
 
     // ================== SEARCH ==================
@@ -29,6 +33,10 @@ public class AppController {
 
     public List<String> searchByDefinition(String keyword) {
         return dictionaryService.searchByDefinition(keyword);
+    }
+
+    public List<String> getSearchHistory(){
+        return dictionaryService.getSearchHistory();
     }
 
 }

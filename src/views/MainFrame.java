@@ -4,6 +4,8 @@ import controllers.AppController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * @author Hoang
@@ -18,7 +20,16 @@ public class MainFrame extends JFrame {
 
         setDefaultLookAndFeelDecorated(true);
         setTitle("Slang Dictionary App");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+               controller.saveData();
+               System.exit(0);
+            }
+        });
+
         setSize(900, 600);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
