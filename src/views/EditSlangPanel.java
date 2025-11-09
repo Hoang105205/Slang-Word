@@ -56,6 +56,7 @@ public class EditSlangPanel extends JPanel {
 
     private void buildCenterPanel() {
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
 
         btnAddMeaning.setAlignmentX(Component.LEFT_ALIGNMENT);
         btnAddMeaning.setEnabled(false);

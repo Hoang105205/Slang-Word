@@ -50,6 +50,7 @@ public class AddSlangPanel extends JPanel {
 
     private void buildCenterPanel() {
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
 
         JTextField firstMeaning = Helper.createTextField();
         meaningFields.add(firstMeaning);

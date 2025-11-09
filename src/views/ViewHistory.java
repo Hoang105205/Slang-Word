@@ -26,6 +26,7 @@ public class ViewHistory extends JPanel {
         // Page_center
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
 
         JTextArea resultArea = new JTextArea();
         resultArea.setEditable(false);
