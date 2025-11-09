@@ -43,7 +43,20 @@ public class DictionaryService {
         return result;
     }
 
+    public boolean isSlangExist(String slang) {
+        return dictionary.slangMap.containsKey(slang);
+    }
+
     public List<String> getSearchHistory() {
         return dictionary.searchedSlang;
+    }
+
+    public void addSlang(String slang, List<String> definitions){
+        dictionary.slangMap.put(slang, new ArrayList<>(definitions));
+    }
+
+    public void addDefinitions(String slang, List<String> definitions){
+        List<String> meanings = dictionary.slangMap.get(slang);
+        meanings.addAll(definitions);
     }
 }

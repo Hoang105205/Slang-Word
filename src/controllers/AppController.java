@@ -39,4 +39,18 @@ public class AppController {
         return dictionaryService.getSearchHistory();
     }
 
+    public boolean isSlangExist(String slang) {
+        return dictionaryService.isSlangExist(slang);
+    }
+
+    // ================== Config ==================
+
+    public void addSlang(String slang, List<String> definitions){
+        dictionaryService.addSlang(slang, definitions);
+    }
+
+    public void addDefinitions(String slang,  List<String> definitions){
+        dictionaryService.addDefinitions(slang, definitions);
+    }
+
 }

@@ -30,6 +30,10 @@ public class NavBar extends JPanel {
         });
 
         JButton btnAddSlang= new JButton("Add Slang");
+        btnAddSlang.addActionListener(e -> {
+           frame.setContent(new AddSlangPanel(controller));
+        });
+
         JButton btnEditSlang= new JButton("Edit Slang");
         JButton btnDeleteSlang= new JButton("Delete Slang");
         JButton btnRefetchRootData= new JButton("Refetch Root Data");
