@@ -17,12 +17,13 @@ public class SearchBySlangWordPanel extends JPanel {
         // Page_start
         JPanel searchPanel = new JPanel();
 
+        JLabel searchLabel = new JLabel("Enter your slang word: ");
+        searchLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
         JTextField searchText = new JTextField(20);
         searchText.setFont(new Font("Arial", Font.PLAIN, 20));
+
         JButton btnSearch = new JButton("Search");
-        searchText.setFont(new Font("Arial", Font.PLAIN, 20));
-        JLabel searchLabel = new JLabel("Enter your slang word: ");
-        searchLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 
         searchPanel.add(searchLabel);
         searchPanel.add(searchText);

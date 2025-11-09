@@ -53,4 +53,8 @@ public class AppController {
         dictionaryService.addDefinitions(slang, definitions);
     }
 
+    public void editSlang(String slang, List<String> definitions){
+        dictionaryService.editSlang(slang, definitions);
+    }
+
 }

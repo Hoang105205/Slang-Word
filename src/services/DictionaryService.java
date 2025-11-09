@@ -59,4 +59,8 @@ public class DictionaryService {
         List<String> meanings = dictionary.slangMap.get(slang);
         meanings.addAll(definitions);
     }
+
+    public void editSlang(String slang, List<String> meanings) {
+        dictionary.slangMap.put(slang, new ArrayList<>(meanings));
+    }
 }
