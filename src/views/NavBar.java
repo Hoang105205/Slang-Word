@@ -40,7 +40,15 @@ public class NavBar extends JPanel {
         });
 
         JButton btnDeleteSlang= new JButton("Delete Slang");
+        btnDeleteSlang.addActionListener(e -> {
+            frame.setContent(new DeleteSlangPanel(controller));
+        });
+
         JButton btnRefetchRootData= new JButton("Refetch Root Data");
+        btnRefetchRootData.addActionListener(e -> {
+            frame.setContent(new RefetchRootDataPanel(controller));
+        });
+
         JButton btnRandomSlang= new JButton("On this day slang word");
         JButton btnQuiz = new JButton("Play a quiz!");
 

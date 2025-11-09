@@ -63,4 +63,8 @@ public class DictionaryService {
     public void editSlang(String slang, List<String> meanings) {
         dictionary.slangMap.put(slang, new ArrayList<>(meanings));
     }
+
+    public void deleteSlang(String slang) {
+        dictionary.slangMap.remove(slang);
+    }
 }

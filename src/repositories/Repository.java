@@ -95,4 +95,55 @@ public class Repository {
             System.out.println("Error when saving file: " + DATA_FILE);
         }
     }
+
+    public Dictionary loadRootData(){
+        Dictionary dictionary = null;
+        Map<String, List<String>> slangMap = new HashMap<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(ROOT_FILE))){
+            String line;
+
+            // skip the first line
+            br.readLine();
+
+            while ((line = br.readLine()) != null){
+                if (line.isBlank() || !line.contains("`")) {
+                    continue;
+                }
+
+                String[] parts = line.split("`");
+
+                String slangWord = parts[0].trim();
+
+                String[] meanings = parts[1].split("\\|");
+
+                List<String> meaningsList = new ArrayList<>();
+                for (String meaning : meanings){
+                    meaningsList.add(meaning.trim());
+                }
+
+                if (slangMap.containsKey(slangWord)){
+                    slangMap.get(slangWord).addAll(meaningsList);
+                }
+                else{
+                    slangMap.put(slangWord, meaningsList);
+                }
+            }
+
+            List<String> searchedSlang = new ArrayList<>();
+
+            dictionary = new Dictionary(slangMap, searchedSlang);
+
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))){
+                oos.writeObject(dictionary);
+            }
+
+            System.out.println("Read by Root File");
+
+        } catch (IOException e){
+            System.out.println("Error when reading file: " + ROOT_FILE);
+        }
+
+        return dictionary;
+    }
 }

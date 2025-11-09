@@ -57,4 +57,15 @@ public class AppController {
         dictionaryService.editSlang(slang, definitions);
     }
 
+    public void deleteSlang(String slang){
+        dictionaryService.deleteSlang(slang);
+    }
+
+    public void resetToRootData() {
+        Dictionary rootDictionary = repository.loadRootData();
+        this.dictionary = rootDictionary;
+        this.dictionaryService = new DictionaryService(rootDictionary);
+        repository.saveData(rootDictionary);
+    }
+
 }
