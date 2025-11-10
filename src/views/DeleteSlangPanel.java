@@ -121,7 +121,8 @@ public class DeleteSlangPanel extends JPanel {
 
         int choice = JOptionPane.showConfirmDialog(
                 this,
-                "Are you sure you want to delete this slang?",
+                "Are you sure you want to delete this slang?\n" +
+                        "This is a permanent action!",
                 "Confirm Delete",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.WARNING_MESSAGE
