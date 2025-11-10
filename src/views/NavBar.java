@@ -11,7 +11,7 @@ import java.awt.*;
  */
 public class NavBar extends JPanel {
     public NavBar(MainFrame frame, AppController controller) {
-        setLayout(new GridLayout(0, 1, 5, 5));
+        setLayout(new GridLayout(0, 1, 10, 10));
         setPreferredSize(new Dimension(200, 0));
 
         JButton btnHome = new JButton("Search for a Slang");
@@ -44,12 +44,16 @@ public class NavBar extends JPanel {
             frame.setContent(new DeleteSlangPanel(controller));
         });
 
-        JButton btnRefetchRootData= new JButton("Refetch Root Data");
+        JButton btnRefetchRootData= new JButton("Reset to Root Data");
         btnRefetchRootData.addActionListener(e -> {
             frame.setContent(new RefetchRootDataPanel(controller));
         });
 
         JButton btnRandomSlang= new JButton("On this day slang word");
+        btnRandomSlang.addActionListener(e -> {
+            frame.setContent(new RandomSlangPanel(controller));
+        });
+
         JButton btnQuiz = new JButton("Play a quiz!");
 
 

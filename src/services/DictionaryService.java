@@ -3,9 +3,7 @@ package services;
 import models.Dictionary;
 import repositories.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -66,5 +64,16 @@ public class DictionaryService {
 
     public void deleteSlang(String slang) {
         dictionary.slangMap.remove(slang);
+    }
+
+    public Map.Entry<String, List<String>> getRandomSlang() {
+        List<String> slangs = new ArrayList<>(dictionary.slangMap.keySet());
+        if (slangs.isEmpty()) {
+            return null;
+        }
+        Random random = new Random();
+        String randomSlang = slangs.get(random.nextInt(slangs.size()));
+
+        return new AbstractMap.SimpleEntry<>(randomSlang, dictionary.slangMap.get(randomSlang));
     }
 }

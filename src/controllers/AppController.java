@@ -5,6 +5,7 @@ import repositories.Repository;
 import services.DictionaryService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Hoang
@@ -66,6 +67,10 @@ public class AppController {
         this.dictionary = rootDictionary;
         this.dictionaryService = new DictionaryService(rootDictionary);
         repository.saveData(rootDictionary);
+    }
+
+    public Map.Entry<String, List<String>> getRandomSlang(){
+        return dictionaryService.getRandomSlang();
     }
 
 }
