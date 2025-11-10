@@ -55,6 +55,9 @@ public class NavBar extends JPanel {
         });
 
         JButton btnQuiz = new JButton("Play a quiz!");
+        btnQuiz.addActionListener(e -> {
+            frame.setContent(new PlayQuizPanel(controller, frame));
+        });
 
 
         JButton btnExit = new JButton("Exit");
