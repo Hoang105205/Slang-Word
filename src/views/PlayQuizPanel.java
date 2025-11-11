@@ -39,6 +39,10 @@ public class PlayQuizPanel extends JPanel {
                 BorderFactory.createLineBorder(Color.GRAY, 2),
                 BorderFactory.createEmptyBorder(20, 20, 20, 20)));
 
+        btnBySlang.addActionListener(e -> {
+            mainFrame.setContent(new ChooseSlangPanel(controller, mainFrame));
+        });
+
         centerPanel.add(Box.createVerticalStrut(20));
         centerPanel.add(titleLabel);
         centerPanel.add(Box.createVerticalStrut(10));

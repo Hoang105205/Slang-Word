@@ -12,18 +12,18 @@ import java.util.List;
  * @author Hoang
  * @date 11/10/2025
  */
-public class ChooseDefinitionPanel extends JPanel {
+public class ChooseSlangPanel extends JPanel {
     private JButton btnBack = Helper.createButton("Back");
     private JPanel centerPanel = new JPanel();
     private Map.Entry<String, List<String>> correctSlang;
-    private String correctAnswer;
+    private String definitionToChoose;
     private MainFrame mainFrame;
     private AppController controller;
     private final Random random = new Random();
-    private List<String> definitions;
+    private List<String> slangs;
 
 
-    public ChooseDefinitionPanel(AppController controller, MainFrame mainFrame) {
+    public ChooseSlangPanel(AppController controller, MainFrame mainFrame) {
         setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         setLayout(new BorderLayout());
         this.mainFrame = mainFrame;
@@ -31,25 +31,19 @@ public class ChooseDefinitionPanel extends JPanel {
 
         // generate the quiz
         correctSlang = controller.getRandomSlang();
-        correctAnswer = correctSlang.getValue().get(random.nextInt(correctSlang.getValue().size()));
+        definitionToChoose = correctSlang.getValue().get(random.nextInt(correctSlang.getValue().size()));
 
         Set<String> options = new HashSet<>();
-        options.add(correctAnswer);
+        options.add(correctSlang.getKey());
 
         while(options.size() < 4) {
             Map.Entry<String, List<String>> randomSlang = controller.getRandomSlang();
 
-            if (randomSlang.getKey().equals(correctSlang.getKey())) continue;
-
-            String randomMeaning =  randomSlang.getValue().get(random.nextInt(randomSlang.getValue().size()));
-
-            options.add(randomMeaning);
+            options.add(randomSlang.getKey());
         }
 
-        definitions = new ArrayList<>(options);
-        Collections.shuffle(definitions);
-
-
+        slangs = new ArrayList<>(options);
+        Collections.shuffle(slangs);
 
         JPanel topPanel = buildTopPanel();
 
@@ -83,27 +77,27 @@ public class ChooseDefinitionPanel extends JPanel {
         centerPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         JPanel headPanel = new JPanel();
-        JLabel slangLabel = new JLabel(correctSlang.getKey());
-        slangLabel.setFont(new Font("Arial", Font.BOLD, 25));
-        slangLabel.setForeground(Color.BLUE);
-        headPanel.add(slangLabel);
+        JLabel definitionLabel = new JLabel(definitionToChoose);
+        definitionLabel.setFont(new Font("Arial", Font.BOLD, 25));
+        definitionLabel.setForeground(Color.BLUE);
+        headPanel.add(definitionLabel);
         headPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
 
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new GridLayout(2, 2, 10, 10));
 
-        for (String definition : definitions) {
-            JButton btnOption = Helper.createButton("<html><body style='text-align:center;'>" + definition + "</body></html>");
+        for (String slang : slangs) {
+            JButton btnOption = Helper.createButton("<html><body style='text-align:center;'>" + slang + "</body></html>");
             btnOption.setFont(new Font("Arial", Font.BOLD, 15));
             btnOption.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
             btnOption.setPreferredSize(new Dimension(100, 20));
 
-            btnOption.putClientProperty("value", definition);
+            btnOption.putClientProperty("value", slang);
 
             btnOption.addActionListener(e -> {
                 String selected = (String) btnOption.getClientProperty("value");
 
-                if (selected.equals(correctAnswer)) {
+                if (selected.equals(correctSlang.getKey())) {
                     JOptionPane.showMessageDialog(this, "You're correct!\n",
                             "Correct Answer", JOptionPane.INFORMATION_MESSAGE);
 
