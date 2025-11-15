@@ -13,8 +13,8 @@ import java.util.Map;
  * @date 11/4/2025
  */
 public class Repository {
-    private static final String DATA_FILE = "src/resources/data.DAT";
-    private static final String ROOT_FILE = "src/resources/slang.txt";
+    private static final String DATA_FILE = "resources/data.DAT";
+    private static final String ROOT_FILE = "resources/slang.txt";
 
     public Repository(){
 
@@ -34,7 +34,6 @@ public class Repository {
             catch (IOException | ClassNotFoundException e){
                 System.out.println("Error when reading file: " + DATA_FILE);
             }
-            System.out.println("Read by Data File");
         }
         else{
             Map<String, List<String>> slangMap = new HashMap<>();
@@ -77,7 +76,6 @@ public class Repository {
                     oos.writeObject(dictionary);
                 }
 
-                System.out.println("Read by Root File");
 
             } catch (IOException e){
                 System.out.println("Error when reading file: " + ROOT_FILE);
@@ -137,8 +135,6 @@ public class Repository {
             try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))){
                 oos.writeObject(dictionary);
             }
-
-            System.out.println("Read by Root File");
 
         } catch (IOException e){
             System.out.println("Error when reading file: " + ROOT_FILE);

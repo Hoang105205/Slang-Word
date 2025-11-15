@@ -1,0 +1,43 @@
+Slang Dictionary – Bảng chấm điểm chức năng
+--------------------------------------------
+
+1. Tìm kiếm theo slang word
+   Điểm: 10 / 10
+
+2. Tìm kiếm theo definition
+   Điểm: 10 / 10
+
+3. Hiển thị history
+   Điểm: 10 / 10
+
+4. Thêm slang word mới
+   Điểm: 10 / 10
+
+5. Chỉnh sửa (edit) 1 slang word
+   Điểm: 10 / 10
+
+6. Xóa (delete) 1 slang word
+   Điểm: 10 / 10
+
+7. Reset danh sách slang words về bản gốc
+   Điểm: 10 / 10
+
+8. Random 1 slang word (On This Day Slang Word)
+   Điểm: 10 / 10
+
+9. Quiz dạng 1: hiển thị 1 slang word + 4 đáp án definition
+   Điểm: 10 / 10
+
+10. Quiz dạng 2: hiển thị 1 definition + 4 đáp án slang words
+    Điểm: 10 / 10
+
+-----------
+
+Tổng điểm: 100 / 100
+
+--------------------------------------------
+Link video demo (YouTube):
+https://youtu.be/QNyZ6EMbDKI
+
+--------------------------------------------
+Tác giả: Lưu Huy Hoàng – 23127047

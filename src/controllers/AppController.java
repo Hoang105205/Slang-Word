@@ -31,7 +31,6 @@ public class AppController {
         return dictionaryService.searchBySlang(word);
     }
 
-
     public List<String> searchByDefinition(String keyword) {
         return dictionaryService.searchByDefinition(keyword);
     }
@@ -43,8 +42,6 @@ public class AppController {
     public boolean isSlangExist(String slang) {
         return dictionaryService.isSlangExist(slang);
     }
-
-    // ================== Config ==================
 
     public void addSlang(String slang, List<String> definitions){
         dictionaryService.addSlang(slang, definitions);
